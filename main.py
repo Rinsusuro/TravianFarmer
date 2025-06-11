@@ -1,16 +1,24 @@
-# This is a sample Python script.
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+import time
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# === CONFIG ===
+website_url = "https://ts7.x1.international.travian.com/dorf1.php"  # Replace with your desired URL
 
+# === Setup Chrome Options ===
+chrome_options = Options()
+chrome_options.headless = False  # Ensure it's not headless
+chrome_options.add_argument("--start-maximized")  # Optional: start maximized
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# === Initialize WebDriver ===
+driver = webdriver.Chrome(options=chrome_options)
 
+# === Open Website ===
+driver.get(website_url)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# === Optional: Keep it open for a while before closing ===
+time.sleep(10)  # seconds
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# === Cleanup ===
+driver.quit()
