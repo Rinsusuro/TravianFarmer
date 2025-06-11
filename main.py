@@ -5,8 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # === Credentials & URL ===
-email = "your_email@example.com"
-password = "your_secure_password"
+email = "placeholder user"
+password = "placeholder password"
 website_url = "https://ts7.x1.international.travian.com/"  # Replace with actual login page
 
 # === Chrome Options ===
@@ -34,6 +34,20 @@ try:
         EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))
     )
     submit_button.click()
+
+    # Wait for link to appear after login
+    target_href = "https://ts7.x1.international.travian.com/build.php?id=39&gid=16"
+    WebDriverWait(driver, 15).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, f'a[href="{target_href}"]'))
+    ).click()
+
+    # === [3] CLICK FIRST START FARM LIST BUTTON ===
+    WebDriverWait(driver, 15).until(
+        EC.element_to_be_clickable((By.CLASS_NAME, "startFarmList"))
+    ).click()
+
+    print("Script complete. Browser will remain open for manual inspection.")
+    input("Press Enter to exit the script and close the browser...")
 
 except Exception as e:
     print(f"Error: {e}")
