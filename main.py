@@ -5,8 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # === Credentials & URL ===
-email = "placeholder user"
-password = "placeholder password"
+email = "user"
+password = "pw"
 website_url = "https://ts7.x1.international.travian.com/"  # Replace with actual login page
 
 # === Chrome Options ===
@@ -45,9 +45,6 @@ try:
     WebDriverWait(driver, 15).until(
         EC.element_to_be_clickable((By.CLASS_NAME, "startFarmList"))
     ).click()
-
-    print("Script complete. Browser will remain open for manual inspection.")
-    input("Press Enter to exit the script and close the browser...")
 
 except Exception as e:
     print(f"Error: {e}")
