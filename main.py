@@ -11,7 +11,7 @@ website_url = "https://ts7.x1.international.travian.com/"  # Replace with actual
 
 # === Chrome Options ===
 options = Options()
-options.headless = False  # Show browser
+options.headless = True  # Show browser
 options.add_argument("--start-maximized")
 
 # === Start Chrome WebDriver ===
